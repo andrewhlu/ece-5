@@ -1,2 +1,2 @@
-# ece-5
+# ECE 5
 A repository for all code files created in ECE 5 labs

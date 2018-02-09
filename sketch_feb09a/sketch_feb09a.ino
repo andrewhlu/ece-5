@@ -1,5 +1,6 @@
 #include <Wire.h>
 int on = 0;
+float threshold = 1.2;
 
 void setup() {
   pinMode(13, OUTPUT);
@@ -30,7 +31,7 @@ void loop() {
 
   Serial.println(outputString);
 
-  if(abs(x) >= 1.5 || abs(y) >= 1.5 || abs(z) >= 1.5) {
+  if(abs(x) >= threshold || abs(y) >= threshold || abs(z) >= threshold) {
     if(on == 0) {
       digitalWrite(13, HIGH);
       on = 1;

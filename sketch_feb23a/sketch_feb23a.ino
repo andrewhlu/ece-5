@@ -1,11 +1,10 @@
-const int trigPin = 7;
-const int echoPin1 = 8;
-const int echoPin2 = 9;
-const int echoPin3 = 10;
-
-const int redPin = 11;
-const int greenPin = 12;
-const int bluePin = 13;
+const int trigPin = 6;
+const int echoPin1 = 7;
+const int echoPin2 = 8;
+const int echoPin3 = 9;
+const int redPin = 10;
+const int greenPin = 11;
+const int bluePin = 12;
 
 float distance1, distance2, distance3;
 
@@ -55,4 +54,3 @@ float getDistance(readPin) {
 
   return ((pulseIn(readPin, HIGH))*0.0343)/2;
 }
-

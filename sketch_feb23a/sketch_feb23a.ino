@@ -1,16 +1,15 @@
-const int redPin = 11;
-const int greenPin = 12;
-const int bluePin = 13;
-
 const int trigPin = 7;
 const int echoPin1 = 8;
 const int echoPin2 = 9;
 const int echoPin3 = 10;
 
+const int redPin = 11;
+const int greenPin = 12;
+const int bluePin = 13;
+
 float distance1, distance2, distance3;
 
 void setup() {
-  // put your setup code here, to run once:
   pinMode(redPin, OUTPUT);
   pinMode(greenPin, OUTPUT);
   pinMode(bluePin, OUTPUT);
@@ -23,30 +22,9 @@ void setup() {
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-  digitalWrite(trigPin, LOW);
-  delayMicroseconds(2);
-  digitalWrite(trigPin, HIGH);
-  delayMicroseconds(10);
-  digitalWrite(trigPin, LOW);
-
-  distance1 = ((pulseIn(echoPin1, HIGH))*0.0343)/2;
-
-  digitalWrite(trigPin, LOW);
-  delayMicroseconds(2);
-  digitalWrite(trigPin, HIGH);
-  delayMicroseconds(10);
-  digitalWrite(trigPin, LOW);
-  
-  distance2 = ((pulseIn(echoPin2, HIGH))*0.0343)/2;
-
-  digitalWrite(trigPin, LOW);
-  delayMicroseconds(2);
-  digitalWrite(trigPin, HIGH);
-  delayMicroseconds(10);
-  digitalWrite(trigPin, LOW);
-  
-  distance3 = ((pulseIn(echoPin3, HIGH))*0.0343)/2;
+  distance1 = getDistance(echoPin1);
+  distance2 = getDistance(echoPin2);
+  distance3 = getDistance(echoPin3);
 
   digitalWrite(redPin, LOW);
   digitalWrite(greenPin, LOW);
@@ -67,3 +45,14 @@ void loop() {
   Serial.println(outputString);
   //delay(50);
 }
+
+float getDistance(readPin) {
+  digitalWrite(trigPin, LOW);
+  delayMicroseconds(2);
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigPin, LOW);
+
+  return ((pulseIn(readPin, HIGH))*0.0343)/2;
+}
+

@@ -31,7 +31,21 @@ void loop() {
   digitalWrite(trigPin, LOW);
 
   distance1 = ((pulseIn(echoPin1, HIGH))*0.0343)/2;
+
+  digitalWrite(trigPin, LOW);
+  delayMicroseconds(2);
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigPin, LOW);
+  
   distance2 = ((pulseIn(echoPin2, HIGH))*0.0343)/2;
+
+  digitalWrite(trigPin, LOW);
+  delayMicroseconds(2);
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigPin, LOW);
+  
   distance3 = ((pulseIn(echoPin3, HIGH))*0.0343)/2;
 
   digitalWrite(redPin, LOW);
@@ -44,12 +58,12 @@ void loop() {
   else if(distance2 < distance1 && distance2 < distance3) {
     digitalWrite(greenPin, HIGH);
   }
-  else if(distance3 < distance1 && distancce3 < distance2) {
+  else if(distance3 < distance1 && distance3 < distance2) {
     digitalWrite(bluePin, HIGH);
   }
 
   String outputString = String("L: ") + distance1 + " M: " + distance2 + " R: " + distance3;
 
   Serial.println(outputString);
-  delay(50);
+  //delay(50);
 }

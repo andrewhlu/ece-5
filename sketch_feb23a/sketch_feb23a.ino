@@ -54,5 +54,11 @@ float getDistance(int readPin) {
   delayMicroseconds(10);
   digitalWrite(trigPin, LOW);
 
-  return ((pulseIn(readPin, HIGH))*0.0343)/2;
+  int pulse = ((pulseIn(readPin, HIGH))*0.0343)/2;
+
+  if(pulse == 0) {
+    pulse = 9999;
+  }
+  
+  return pulse;
 }

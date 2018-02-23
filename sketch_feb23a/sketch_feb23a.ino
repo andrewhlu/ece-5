@@ -1,6 +1,6 @@
-const int redPin = 4;
-const int greenPin = 5;
-const int bluePin = 6;
+const int redPin = 11;
+const int greenPin = 12;
+const int bluePin = 13;
 
 const int trigPin = 7;
 const int echoPin1 = 8;

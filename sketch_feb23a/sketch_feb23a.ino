@@ -6,6 +6,8 @@ const int redPin = 10;
 const int greenPin = 11;
 const int bluePin = 12;
 
+int threshold = 150;
+
 float distance1, distance2, distance3;
 
 void setup() {
@@ -29,23 +31,23 @@ void loop() {
   digitalWrite(greenPin, LOW);
   digitalWrite(bluePin, LOW);
   
-  if(distance1 < distance2 && distance1 < distance3) {
+  if(distance1 < distance2 && distance1 < distance3 && distance1 < threshold) {
     digitalWrite(redPin, HIGH);
   }
-  else if(distance2 < distance1 && distance2 < distance3) {
+  else if(distance2 < distance1 && distance2 < distance3 && distance2 < threshold) {
     digitalWrite(greenPin, HIGH);
   }
-  else if(distance3 < distance1 && distance3 < distance2) {
+  else if(distance3 < distance1 && distance3 < distance2 && distance3 < threshold) {
     digitalWrite(bluePin, HIGH);
   }
 
   String outputString = String("L: ") + distance1 + " M: " + distance2 + " R: " + distance3;
 
   Serial.println(outputString);
-  //delay(50);
+  delay(50);
 }
 
-float getDistance(readPin) {
+float getDistance(int readPin) {
   digitalWrite(trigPin, LOW);
   delayMicroseconds(2);
   digitalWrite(trigPin, HIGH);

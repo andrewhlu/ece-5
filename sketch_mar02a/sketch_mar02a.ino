@@ -38,24 +38,29 @@ void loop() {
   digitalWrite(bluePin, LOW);
 
   if(minDist == 0) {
+    //Red
     digitalWrite(redPin, HIGH);
     swiper.write(0);
   }
   else if(minDist == 1) {
+    //Magenta
     digitalWrite(redPin, HIGH);
     digitalWrite(bluePin, HIGH);
     swiper.write(45);
   }
   else if(minDist == 2) {
+    //Green
     digitalWrite(greenPin, HIGH);
     swiper.write(90);
   }
   else if(minDist == 3) {
+    //Cyan
     digitalWrite(greenPin, HIGH);
     digitalWrite(bluePin, HIGH);
     swiper.write(135);
   }
   else if(minDist == 4) {
+    //Yellow
     digitalWrite(redPin, HIGH);
     digitalWrite(greenPin, HIGH);
     swiper.write(180);
@@ -64,7 +69,6 @@ void loop() {
   String outputString = String("R: ") + distValues[0] + " Y: " + distValues[1] + " G: " + distValues[2] + " C: " + distValues[3] + " B: " + distValues[4];
 
   Serial.println(outputString);
-  delay(50);
 }
 
 float getDistance(int readPin) {

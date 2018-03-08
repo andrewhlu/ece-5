@@ -40,7 +40,7 @@ void loop() {
   if(minDist == 0) {
     //Red
     digitalWrite(redPin, HIGH);
-    swiper.write(0);
+    swiper.write(5);
   }
   else if(minDist == 1) {
     //Magenta
@@ -63,7 +63,7 @@ void loop() {
     //Yellow
     digitalWrite(redPin, HIGH);
     digitalWrite(greenPin, HIGH);
-    swiper.write(180);
+    swiper.write(175);
   }
 
   String outputString = String("R: ") + distValues[0] + " Y: " + distValues[1] + " G: " + distValues[2] + " C: " + distValues[3] + " B: " + distValues[4];

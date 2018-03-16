@@ -77,9 +77,11 @@ void loop() {
     swiper.write(175);
   }
 
-  String outputString = String("R: ") + avgValue[0] + " M: " + avgValue[1] + " G: " + avgValue[2] + " C: " + avgValue[3] + " Y: " + avgValue[4];
-
-  Serial.println(outputString);
+  if(minDist == 0) {
+    String outputString = String("#S|SOUND|[]#");
+    Serial.println(outputString);
+    delay(2000);
+  }
 }
 
 float getDistance(int readPin) {

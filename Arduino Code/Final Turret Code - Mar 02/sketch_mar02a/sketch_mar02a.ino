@@ -95,7 +95,7 @@ float getDistance(int readPin) {
     pulse = 9999;
   }
 
-  delay(5);
+  delay(10);
   
   return pulse;
 }

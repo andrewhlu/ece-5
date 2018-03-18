@@ -1,5 +1,4 @@
 #include <Servo.h>
-int pos = 0;
 Servo swiper;
 
 const int servoPin = 3;
@@ -50,8 +49,12 @@ void loop() {
 
   if(minDist == 0) {
     //Red
+    String outputString = String("#S|CHIPMUNK|[]#");
+    Serial.println(outputString);
+    delay(1000);
     digitalWrite(redPin, HIGH);
     swiper.write(5);
+    delay(5000);
   }
   else if(minDist == 1) {
     //Magenta
@@ -76,12 +79,6 @@ void loop() {
     digitalWrite(greenPin, HIGH);
     swiper.write(175);
   }
-
-  if(minDist == 0) {
-    String outputString = String("#S|SOUND|[]#");
-    Serial.println(outputString);
-    delay(2000);
-  }
 }
 
 float getDistance(int readPin) {
@@ -100,20 +97,6 @@ float getDistance(int readPin) {
   delay(5);
   
   return pulse;
-}
-
-float minDistance(float *distArray) {
-  int lowestNum = 9999;
-  int lowestIndex = -1;
-
-  for(int i = 0; i < 5; i++) {
-    if(distArray[i] < lowestNum && distArray[i] < threshold) {
-      lowestNum = distArray[i];
-      lowestIndex = i;
-    }
-  }
-
-  return lowestIndex;
 }
 
 float averageValue(int index, float *distArray1, float *distArray2, float *distArray3, float *distArray4, float *distArray5) {
@@ -161,3 +144,16 @@ float averageValue(int index, float *distArray1, float *distArray2, float *distA
   return avgValue;
 }
 
+float minDistance(float *distArray) {
+  int lowestNum = 9999;
+  int lowestIndex = -1;
+
+  for(int i = 0; i < 5; i++) {
+    if(distArray[i] < lowestNum && distArray[i] < threshold) {
+      lowestNum = distArray[i];
+      lowestIndex = i;
+    }
+  }
+
+  return lowestIndex;
+}

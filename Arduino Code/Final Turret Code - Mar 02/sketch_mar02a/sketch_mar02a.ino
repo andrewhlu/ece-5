@@ -1,5 +1,4 @@
 #include <Servo.h>
-int pos = 0;
 Servo swiper;
 
 const int servoPin = 3;
@@ -100,20 +99,6 @@ float getDistance(int readPin) {
   return pulse;
 }
 
-float minDistance(float *distArray) {
-  int lowestNum = 9999;
-  int lowestIndex = -1;
-
-  for(int i = 0; i < 5; i++) {
-    if(distArray[i] < lowestNum && distArray[i] < threshold) {
-      lowestNum = distArray[i];
-      lowestIndex = i;
-    }
-  }
-
-  return lowestIndex;
-}
-
 float averageValue(int index, float *distArray1, float *distArray2, float *distArray3, float *distArray4, float *distArray5) {
   float avgValue = 0;
 
@@ -159,3 +144,16 @@ float averageValue(int index, float *distArray1, float *distArray2, float *distA
   return avgValue;
 }
 
+float minDistance(float *distArray) {
+  int lowestNum = 9999;
+  int lowestIndex = -1;
+
+  for(int i = 0; i < 5; i++) {
+    if(distArray[i] < lowestNum && distArray[i] < threshold) {
+      lowestNum = distArray[i];
+      lowestIndex = i;
+    }
+  }
+
+  return lowestIndex;
+}
